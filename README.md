@@ -1,125 +1,120 @@
-# wordpress-mcp-skill
+# 🤖 MG WordPress MCP Skill
 
-**Skill oficial para Claude Code** que conecta con cualquier WordPress donde esté instalado el plugin **[MG Claude Connector](https://sistemasmg.es)**.
+![MIT License](https://img.shields.io/badge/license-MIT-green.svg)
+![Plugin comercial](https://img.shields.io/badge/plugin-comercial-orange.svg)
+![WordPress 6.0+](https://img.shields.io/badge/WordPress-6.0%2B-21759b.svg?logo=wordpress&logoColor=white)
+![Claude Code](https://img.shields.io/badge/Claude_Code-compatible-blueviolet.svg)
+![MCP](https://img.shields.io/badge/protocol-MCP-black.svg)
 
-Gestión completa de WordPress desde lenguaje natural — sin paneles, sin clics, sin salir de Claude Code.
+**Skill para Claude Code que convierte cualquier WordPress en un sitio controlable desde lenguaje natural.**
 
-> **Requiere el plugin MG Claude Connector instalado en tu WordPress.**
-> [Consíguelo en sistemasmg.es →](https://sistemasmg.es)
+Instala el skill una vez. Conecta tantos sitios como quieras. Gestiona contenido, plugins, base de datos, archivos y usuarios sin abrir el panel de administración.
+
+> **Requiere el plugin [MG Claude Connector](https://sistemasmg.es/producto/mg-claude-connector/) instalado en cada WordPress.**
 
 ---
 
-## Instalación del skill
+## Instalación (2 pasos)
+
+**Paso 1 — Instala el skill:**
 
 ```bash
 git clone https://github.com/Dani-Martin/wordpress-mcp-skill ~/.claude/skills/wp-mcp
 ```
 
-Eso es todo. El skill queda disponible como `/wp-mcp` en Claude Code.
+**Paso 2 — Conecta tu primer sitio:**
+
+1. Instala el plugin **MG Claude Connector** en tu WordPress
+2. Ve a **MG Claude Connector → Dashboard**
+3. Escribe el nombre que quieres darle al sitio y copia el comando que aparece
+4. Pégalo en Terminal — ya lleva tu URL y API key rellenas
+
+El sitio queda registrado permanentemente. Para sitios adicionales, repite el paso 2.
 
 ---
 
-## Conectar un sitio WordPress
+## Demo
 
-El plugin genera el comando de conexión por ti. Solo tienes que ejecutarlo una vez:
+```
+/wp-mcp mi-tienda
+```
 
-1. En tu WordPress, ve a **MG Claude Connector → Dashboard**
-2. Escribe el nombre con el que quieres llamar a este sitio
-3. Copia el comando que aparece en pantalla — ya lleva tu URL y API key rellenas
-4. Pégalo en Terminal y pulsa Enter
-
-Después de eso el sitio queda registrado y Claude lo reconoce automáticamente.
+| Lo que escribes | Lo que hace Claude |
+|---|---|
+| `Lista los plugins sin actualizar en los últimos 6 meses` | Consulta versiones y fechas de todos los plugins activos |
+| `Haz un snapshot antes de empezar` | Crea un backup completo con etiqueta |
+| `Dame los últimos 10 pedidos de WooCommerce pendientes` | Ejecuta SELECT con filtro de estado y los muestra formateados |
+| `Muéstrame el contenido de functions.php del tema activo` | Lee el archivo directamente del servidor |
+| `Añade esta función a mi-plugin.php: [...]` | Hace backup del archivo y aplica el cambio |
+| `El sitio se ha roto, rollback al snapshot anterior` | Lista backups disponibles y ejecuta el rollback |
+| `Crea una entrada con categoría "Novedades" y este texto` | Inserta el post vía API y confirma el ID creado |
 
 ---
 
-## Uso
+## 51 herramientas en 6 categorías
 
-```
-/wp-mcp
-/wp-mcp nombre-del-sitio
-```
-
-Si tienes un solo sitio registrado se conecta directamente. Si tienes varios, te muestra la lista para elegir.
-
-A partir de ahí hablas en lenguaje natural:
-
-```
-Lista los plugins que llevan más de 6 meses sin actualizar
-
-Muéstrame el contenido de functions.php del tema activo
-
-Crea un snapshot antes de empezar
-
-Dame los últimos 10 pedidos de WooCommerce con estado pending
-
-Edita el archivo mi-plugin.php y añade esta función: [...]
-
-Algo ha fallado, haz rollback al último backup
-```
+| Categoría | Herramientas | Ejemplos |
+|---|---|---|
+| **📝 Contenido** | Posts, páginas, CPTs, taxonomías, media | Crear entradas, editar páginas, gestionar categorías |
+| **🗂️ Archivos** | Leer, crear, editar, buscar en ficheros | Editar functions.php, buscar código en plugins |
+| **🗄️ Base de datos** | SELECT, INSERT, UPDATE, DELETE, estructura | Consultar pedidos WooCommerce, modificar opciones |
+| **🧩 Plugins y temas** | Listar, activar, desactivar, editar código | Ver versiones, activar un plugin, editar CSS del tema |
+| **👤 Usuarios** | Listar, crear, actualizar, gestionar roles | Crear usuario, cambiar rol, ver últimos registros |
+| **⚙️ Configuración** | Estado del sitio, opciones, caché, cron | Limpiar caché, ver eventos cron, leer wp_options |
 
 ---
 
-## ¿Qué puedes hacer?
+## Seguridad integrada en el plugin
 
-### Contenido
-- Listar, buscar, crear, editar y eliminar posts, páginas y custom post types
-- Gestionar categorías, etiquetas y taxonomías personalizadas
+El plugin que expone las herramientas incluye varias capas de protección:
 
-### Plugins y temas
-- Ver estado, versión y descripción de todos los plugins
-- Activar, desactivar, instalar y eliminar plugins
-- Leer y editar archivos PHP/CSS/JS de plugins y temas directamente
+- **Autenticación Bearer token** — solo peticiones con la API key correcta ejecutan herramientas
+- **Backup automático antes de cada escritura** — archivos y filas de BD se respaldan antes de modificarse
+- **Log de auditoría completo** — cada operación queda registrada con usuario, timestamp y resultado
+- **Modo sandbox** — bloquea todas las escrituras si se activa desde el panel
+- **Rate limiting configurable** — límite de peticiones por minuto desde el panel de administración
+- **Restricción por IP** — lista blanca de IPs permitidas opcional
+- **Snapshots manuales** — crea un backup completo antes de cambios importantes con una instrucción
 
-### Sistema de archivos
-- Leer cualquier archivo del sitio
-- Crear y editar archivos con backup automático previo
-- Buscar texto en todos los archivos del proyecto
+---
 
-### Base de datos
-- Ejecutar consultas SELECT y ver resultados formateados
-- Ejecutar INSERT, UPDATE, DELETE con backup automático de filas afectadas
-- Ver estructura de tablas y listado completo de la base de datos
+## Multi-sitio
 
-### Usuarios y opciones
-- Listar, crear y actualizar usuarios con sus roles
-- Leer y escribir cualquier opción de wp_options
+El skill puede gestionar varios sitios desde la misma sesión de Claude Code:
 
-### Administración
-- Ver estado completo del sitio (versión WP, plugins activos, tema, config)
-- Limpiar caché (WP Super Cache, W3TC, WP Rocket)
-- Ver y gestionar eventos cron
+```
+/wp-mcp tienda          → conecta con "tienda"
+/wp-mcp blog-corporativo → cambia al segundo sitio
+/wp-mcp                 → muestra la lista si hay varios registrados
+```
 
-### Backups y seguridad
-- El plugin hace **backup automático** antes de cualquier operación de escritura
-- Crear snapshots manuales antes de cambios importantes
-- Ver el historial de backups y hacer rollback con un comando
-- Log de auditoría completo de todo lo que ha hecho Claude
-
-### Multi-sitio
-- Gestionar varios sitios WordPress desde una misma sesión de Claude Code
-- Cambiar de sitio con un mensaje
+Cada sitio tiene su propia API key y su propio historial de backups.
 
 ---
 
 ## Requisitos
 
-- **Claude Code** (CLI, app Mac/Windows o web)
-- Plugin **MG Claude Connector** instalado y activo en el sitio WordPress
-- WordPress 5.8 o superior, PHP 7.4 o superior
+| Componente | Versión mínima |
+|---|---|
+| Claude Code | Cualquier versión actual |
+| MG Claude Connector (plugin) | 1.2.0+ |
+| WordPress | 6.0+ |
+| PHP | 8.0+ |
+| Servidor | Apache o nginx |
 
 ---
 
 ## Plugin MG Claude Connector
 
-Este skill sin el plugin no hace nada. El plugin es lo que expone las 53 herramientas a través de un endpoint seguro en tu WordPress — backups automáticos, log de auditoría, multi-sitio y autenticación por bearer token incluidos.
+El skill sin el plugin no hace nada. El plugin es quien expone las 51 herramientas a través de un endpoint seguro en tu WordPress — autenticación bearer, backups automáticos, log de auditoría, modo sandbox y multi-sitio incluidos desde el primer día.
 
 **Desarrollado por [Sistemas Digitales MG](https://sistemasmg.es)**
 
-**[Comprar MG Claude Connector →](https://sistemasmg.es)**
+### [🛒 Comprar MG Claude Connector — 19 €/mes →](https://sistemasmg.es/producto/mg-claude-connector/)
 
 ---
 
 ## Licencia
 
-El skill (este repositorio) — MIT License, uso libre.
-El plugin MG Claude Connector — Licencia comercial, [sistemasmg.es](https://sistemasmg.es).
+- **Este repositorio (skill)** — MIT License, uso libre.
+- **Plugin MG Claude Connector** — Licencia comercial, [sistemasmg.es](https://sistemasmg.es/producto/mg-claude-connector/).
