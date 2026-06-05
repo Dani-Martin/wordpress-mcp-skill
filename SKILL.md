@@ -57,54 +57,19 @@ Indica al usuario que no hay sitios configurados y ofrécele configurar uno ahor
 
 ---
 
-## PASO 2 — Configurar un nuevo sitio
+## PASO 2 — Si no hay sitios configurados
 
-Cuando el usuario diga algo como:
-- *"Añade el sitio X, URL Y, key Z"*
-- *"Configura el sitio X con endpoint Y y api key Z"*
-- *"Registra mi WordPress: [url] [key]"*
+Si el resultado del paso anterior es `NO_CONFIG` o `EMPTY`, indica al usuario:
 
-Ejecuta este script que crea o actualiza el archivo de configuración:
+> "No tienes ningún sitio registrado todavía. Para conectar uno:
+> 1. Ve a tu WordPress Admin → **MG Claude Connector → Dashboard**
+> 2. Pon un nombre al sitio
+> 3. Copia el comando que aparece en pantalla (ya lleva tu URL y API key rellenas)
+> 4. Pégalo en Terminal y pulsa Enter
+>
+> Cuando hayas ejecutado el comando, vuelve aquí y lanzamos `/wp-mcp` de nuevo."
 
-```bash
-python3 - <<'PYEOF'
-import json, os
-
-cfg_path = os.path.expanduser("~/Library/Application Support/Claude/wordpress-sites.json")
-os.makedirs(os.path.dirname(cfg_path), exist_ok=True)
-
-# Cargar configuración existente o crear nueva
-sites = []
-if os.path.exists(cfg_path):
-    try:
-        sites = json.load(open(cfg_path))
-    except:
-        sites = []
-
-# Datos del nuevo sitio (sustituir con los del usuario)
-new_site = {
-    "name": "NOMBRE_SITIO",
-    "url": "URL_ENDPOINT",
-    "key": "API_KEY"
-}
-
-# Comprobar si ya existe (actualizar) o añadir
-found = False
-for i, s in enumerate(sites):
-    if s['name'].lower() == new_site['name'].lower() or s['url'] == new_site['url']:
-        sites[i] = new_site
-        found = True
-        break
-
-if not found:
-    sites.append(new_site)
-
-json.dump(sites, open(cfg_path, 'w'), indent=2, ensure_ascii=False)
-print(f"✓ Sitio '{new_site['name']}' guardado. Total sitios: {len(sites)}")
-PYEOF
-```
-
-Tras guardar, haz el smoke test del endpoint (ver Paso 3) para confirmar que la conexión funciona.
+No intentes crear ni editar el archivo de configuración manualmente. El plugin genera el comando correcto con todos los datos del sitio.
 
 ---
 

@@ -19,37 +19,36 @@ Eso es todo. El skill queda disponible como `/wp-mcp` en Claude Code.
 
 ---
 
-## Primer uso — configurar un sitio
+## Conectar un sitio WordPress
 
-No necesitas editar ningún archivo a mano. Abre Claude Code y escribe:
+El plugin genera el comando de conexión por ti. Solo tienes que ejecutarlo una vez:
 
-```
-/wp-mcp
+1. En tu WordPress, ve a **MG Claude Connector → Dashboard**
+2. Escribe el nombre con el que quieres llamar a este sitio
+3. Copia el comando que aparece en pantalla — ya lleva tu URL y API key rellenas
+4. Pégalo en Terminal y pulsa Enter
 
-Añade mi sitio: nombre "Mi WordPress", endpoint https://miweb.com/wp-json/claude-mcp/v1/mcp, key cmcp_xxxxxxxxxxxx
-```
-
-Claude crea la configuración automáticamente y verifica la conexión. Listo.
-
-> La URL del endpoint y la API key las encuentras en tu WordPress Admin bajo **MG Claude Connector → Configuración**.
+Después de eso el sitio queda registrado y Claude lo reconoce automáticamente.
 
 ---
 
-## Uso diario
+## Uso
 
 ```
 /wp-mcp
-/wp-mcp mi-sitio        (si tienes varios sitios configurados)
+/wp-mcp nombre-del-sitio
 ```
 
-A partir de ahí hablas directamente:
+Si tienes un solo sitio registrado se conecta directamente. Si tienes varios, te muestra la lista para elegir.
+
+A partir de ahí hablas en lenguaje natural:
 
 ```
 Lista los plugins que llevan más de 6 meses sin actualizar
 
 Muéstrame el contenido de functions.php del tema activo
 
-Haz un snapshot antes de empezar a trabajar
+Crea un snapshot antes de empezar
 
 Dame los últimos 10 pedidos de WooCommerce con estado pending
 
@@ -97,19 +96,8 @@ Algo ha fallado, haz rollback al último backup
 - Log de auditoría completo de todo lo que ha hecho Claude
 
 ### Multi-sitio
-- Gestionar varios sitios WordPress desde un mismo hub
-- Añadir y eliminar sitios con un mensaje a Claude
-
----
-
-## Comandos de configuración
-
-| Qué quieres hacer | Qué le dices a Claude |
-|---|---|
-| Añadir un sitio nuevo | `Añade el sitio "Nombre", endpoint [url], key [key]` |
-| Ver sitios configurados | `¿Qué sitios tengo configurados?` |
-| Cambiar de sitio activo | `Cambia al sitio "Nombre"` |
-| Eliminar un sitio | `Elimina el sitio "Nombre" de la configuración` |
+- Gestionar varios sitios WordPress desde una misma sesión de Claude Code
+- Cambiar de sitio con un mensaje
 
 ---
 
