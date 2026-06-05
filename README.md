@@ -1,6 +1,6 @@
 # wordpress-mcp-skill
 
-**Skill oficial para Claude Code** que conecta con cualquier WordPress donde esté instalado el plugin **[Claude MCP Connector](https://sistemasmg.es)**.
+**Skill oficial para Claude Code** que conecta con cualquier WordPress donde esté instalado el plugin **[MG Claude Connector](https://sistemasmg.es)**.
 
 Gestión completa de WordPress desde lenguaje natural: contenido, plugins, temas, archivos, base de datos, usuarios y backups — sin salir de Claude Code.
 
@@ -24,10 +24,10 @@ Gestión completa de WordPress desde lenguaje natural: contenido, plugins, temas
 ## Requisitos
 
 - **Claude Code** (CLI o app)
-- Plugin **Claude MCP Connector** instalado y activo en el sitio WordPress
+- Plugin **MG Claude Connector** instalado y activo en el sitio WordPress
 - Archivo de configuración `~/Library/Application Support/Claude/wordpress-sites.json`
 
-> El plugin Claude MCP Connector es de pago. **[Consíguelo en sistemasmg.es →](https://sistemasmg.es)**
+> El plugin MG Claude Connector es de pago. **[Consíguelo en sistemasmg.es →](https://sistemasmg.es)**
 
 ---
 
@@ -54,7 +54,7 @@ Crea o edita `~/Library/Application Support/Claude/wordpress-sites.json`:
 ]
 ```
 
-La API key la encuentras en WordPress Admin → **Claude MCP → Configuración**.
+La API key la encuentras en WordPress Admin → **MG Claude Connector → Configuración**.
 
 ---
 
@@ -91,17 +91,17 @@ El plugin crea **backups automáticos** antes de cualquier operación de escritu
 
 ---
 
-## Plugin Claude MCP Connector
+## Plugin MG Claude Connector
 
 Este skill es inútil sin el plugin. El plugin es lo que expone las 53 herramientas a través de un endpoint JSON-RPC 2.0 seguro en tu WordPress.
 
 **Desarrollado por [Sistemas Digitales MG](https://sistemasmg.es)**
 
-**[Comprar Claude MCP Connector →](https://sistemasmg.es)**
+**[Comprar MG Claude Connector →](https://sistemasmg.es)**
 
 ---
 
 ## Licencia
 
 El skill (este repositorio) es de uso libre — MIT.
-El plugin Claude MCP Connector es software de pago con licencia comercial.
+El plugin MG Claude Connector es software de pago con licencia comercial.

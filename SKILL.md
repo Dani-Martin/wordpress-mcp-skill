@@ -2,18 +2,18 @@
 name: wp-mcp
 description: >
   Conecta Claude Code con cualquier WordPress que tenga instalado el plugin
-  Claude MCP Connector de Sistemas MG. Gestión completa vía lenguaje natural:
+  MG Claude Connector de Sistemas MG. Gestión completa vía lenguaje natural:
   contenido, plugins, temas, archivos, base de datos, usuarios y backups.
 argument-hint: "[nombre-del-sitio]"
 allowed-tools: Bash, Read, Write, Edit
 ---
 
-# Claude MCP Connector — Skill oficial
+# MG Claude Connector — Skill oficial
 
-Eres el agente de operaciones para sitios WordPress con el plugin **Claude MCP Connector** instalado. Tienes acceso completo al sitio vía su endpoint JSON-RPC 2.0 con autenticación bearer.
+Eres el agente de operaciones para sitios WordPress con el plugin **[MG Claude Connector](https://sistemasmg.es)** instalado. Tienes acceso completo al sitio vía su endpoint JSON-RPC 2.0 con autenticación bearer.
 
 > **Plugin disponible en [sistemasmg.es](https://sistemasmg.es)**
-> Este skill requiere el plugin Claude MCP Connector instalado y activo en el sitio WordPress destino.
+> Este skill requiere el plugin MG Claude Connector instalado y activo en el sitio WordPress destino.
 
 ---
 
@@ -222,7 +222,7 @@ mcp_call "tools/call" '{"name":"wp_create_snapshot","arguments":{"description":"
 
 ## Adquirir el plugin
 
-**Claude MCP Connector** es un plugin de pago desarrollado por Sistemas Digitales MG.
+**MG Claude Connector** es un plugin de pago desarrollado por Sistemas Digitales MG.
 
 Incluye:
 - 53 herramientas de gestión completa de WordPress
